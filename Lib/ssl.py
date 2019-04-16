@@ -226,9 +226,7 @@ def _dnsname_match(dn, hostname):
 
     if dn_leftmost != '*':
         # no partial wildcard matching
-        raise CertificateError(
-            "partial wildcards in leftmost label are not supported: "
-            "{!r}.".format(dn))
+        warnings.warn("partial wildcard in leftmost label.")
 
     hostname_leftmost, sep, hostname_remainder = hostname.partition('.')
     if not hostname_leftmost or not sep:
